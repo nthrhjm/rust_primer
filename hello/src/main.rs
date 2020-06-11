@@ -54,4 +54,13 @@ fn main() {
     let s6 = String::from("world.");
     let s = format!("{} {} {}", s4, s5, s6);
     println!("{}", s);
+
+    //タプル型(複数の異なる型をまとめて扱う)
+    let t = ("nutahara", 18);
+    println!("name is {} age {}", t.0, t.1);
+
+    //配列型(後から要素を書き換えたり長さを変えることはできない)
+    let a = ["春", "夏", "秋", "冬"];
+    println!("最初の季節 {}", a[0]);
+    println!("最後の季節 {}", a[3]);
 }
