@@ -63,4 +63,43 @@ fn main() {
     let a = ["春", "夏", "秋", "冬"];
     println!("最初の季節 {}", a[0]);
     println!("最後の季節 {}", a[3]);
+
+    //参照と借用
+    //所有権と移動
+    //数値の場合
+    let x = 100;
+    let y = x; //xが指し示す値がyにコピーされるので以下のprintln!マクロは両方とも実行できる。
+    println!("x is {}", x);
+    println!("y is {}", y);
+
+    //文字列の場合
+    let m = String::from("Hello");
+    let n = m; //mの中身がnにmoveされる。mは空になる。mの所有権がnに移動（move）したという。
+               //所有権とは固定メモリを示すことができる権限。
+               //Rustでは一つの固定メモリを指し示す変数は一つのみというルールが存在する。
+               //println!("m is {}", m); //空を参照したのでコンパイルエラーが発生する。
+    println!("n is {}", n); //nの中身は"Hello"なので正常に表示できる。
+
+    //借用(borrow)
+    //引数がstring型の関数を使用した場合
+    let x = String::from("Hello");
+    let len = string_length(x); //xの示す値をstring_length()関数にmoveしている
+    println!("len is {}", len);
+    //println!("x is {}", x); //string_length()関数に値をmoveした後なのでコンパイルエラーになる
+
+    //引数が参照(reference)型の関数を使用した場合
+    let x = String::from("Bye");
+    let len = ref_string_length(&x); //xの参照（&x）を渡すことで所有権を手放さない
+    println!("len is {}", len);
+    println!("x is {}", x); //値"Bye"の所有権をxが保持したままなのでxを参照したprintln!マクロを実行できる
+}
+//引数はSting型
+fn string_length(s: String) -> usize {
+    let length = s.len();
+    length
+}
+//引数は&String型
+fn ref_string_length(s: &String) -> usize {
+    let length = s.len();
+    length
 }
