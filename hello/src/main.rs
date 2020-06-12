@@ -119,6 +119,38 @@ fn main() {
     println!("ans is {}", ans);
     let ans = add_one(30);
     println!("ans is {}", ans);
+
+    //構造体
+    struct Sample {
+        x: i32,
+    }
+    impl Sample {
+        fn new(x: i32) -> Sample {
+            Sample { x: x }
+        }
+        fn inc(&self) -> i32 {
+            self.x + 1
+        }
+        fn add(&self, x: i32) -> i32 {
+            self.x + x
+        }
+    }
+
+    let a = Sample::new(10);
+    let ans = a.inc();
+    println!("ans is {}", ans);
+    let ans = a.add(20);
+    println!("ans is {}", ans);
+
+    //クロージャ
+    let num = 10;
+    let add_one = |x| num + x;
+    let add_two = |x, y| x + y;
+
+    let ans = add_one(1);
+    println!("ans is {}", ans);
+    let ans = add_two(10, 20);
+    println!("ans is {}", ans);
 }
 //-----------------------------------------------------------------------------------
 //引数はSting型
