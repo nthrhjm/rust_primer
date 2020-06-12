@@ -151,6 +151,50 @@ fn main() {
     println!("ans is {}", ans);
     let ans = add_two(10, 20);
     println!("ans is {}", ans);
+
+    //文字(char型),Rustの1文字は32ビット(4バイト)
+    let ch = 'A';
+    println!("ch is {}", ch);
+    let ch = 'あ';
+    println!("ch is {}", ch);
+    let ch = '🐈';
+    println!("ch is {}", ch);
+    let ch = '💎';
+    println!("ch is {}\n", ch);
+    let ch = '\u{1F431}';
+    println!("{}\n", ch);
+
+    let ch = 'A';
+    println!("ch is {}", ch); // ch is A
+    let u = ch as u8; //as u8 でcharからu8にキャスト
+    println!("u is {}", u); // u is 65
+    let ch = u as char; //as char でu8からcharにキャスト
+    println!("ch is {}\n", ch); // ch is A
+                                //ASCII文字の操作
+    let s = "hello rust world.";
+    println!("s is {}", s); //s is hello rust world.
+    let hello = &s[0..5]; //文字列スライス 0文字目〜5文字目の前（4文字目）
+    let world = &s[11..]; //文字列スライス 11文字目〜最後の文字まで
+    println!("hello is {}", hello); //hello is hello
+    println!("world is {}", world); //world is world. let len = s.len();
+    let len = s.len(); //&str.len()関数は文字列の長さを返す
+    println!("s.len is {}\n", len); //s.len is 17
+    let mut s = String::new(); //String::new() 空文字を生成
+    s.push_str("hello ");
+    s.push_str("rust ");
+    s.push_str("world.");
+    println!("s is {}\n", s); //s is hello rust world.
+    let hello = "HELLO";
+    let rust = "RUST";
+    let world = "WORLD.";
+    let s = format!("{} {} {}", hello, rust, world);
+    println!("s is {}", s); // s is HELLO RUST WORLD.
+                            //&strは固定文字列、&Stringは可変文字列
+                            //&String型の文字列を生成する
+    let s = "hello rust world.".to_string();
+    println!("s is {}", s); //s is hello rust world.
+    let s = String::from("hello rust world.");
+    println!("s is {}\n", s); //s is hello rust world.
 }
 //-----------------------------------------------------------------------------------
 //引数はSting型
