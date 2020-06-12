@@ -92,7 +92,35 @@ fn main() {
     let len = ref_string_length(&x); //xの参照（&x）を渡すことで所有権を手放さない
     println!("len is {}", len);
     println!("x is {}", x); //値"Bye"の所有権をxが保持したままなのでxを参照したprintln!マクロを実行できる
+
+    //束縛
+    let x = 100;
+    let mut y = 200;
+    println!("x is {}", x);
+    println!("y is {}", y);
+    //x = 200; let で宣言した変数に値を代入するのはダメ
+    y = 400; //let mut 宣言した変数は再代入おk
+    println!("x is {}", x);
+    println!("y is {}", y);
+
+    //スコープ
+    println!("===scope===");
+    let x = 100;
+    println!("x is {}", x);
+    {
+        let x = 200;
+        println!("x in block is {}", x);
+    }
+    println!("x is {}", x);
+
+    println!("{}", test(99));
+    println!("{}", test2(99));
+    let ans = add_two(10, 20);
+    println!("ans is {}", ans);
+    let ans = add_one(30);
+    println!("ans is {}", ans);
 }
+//-----------------------------------------------------------------------------------
 //引数はSting型
 fn string_length(s: String) -> usize {
     let length = s.len();
@@ -102,4 +130,32 @@ fn string_length(s: String) -> usize {
 fn ref_string_length(s: &String) -> usize {
     let length = s.len();
     length
+}
+
+fn test(x: i32) -> i32 {
+    if x < 0 {
+        0
+    } else if x > 100 {
+        100
+    } else {
+        x
+    }
+}
+
+fn test2(x: i32) -> i32 {
+    let ans = if x < 0 {
+        0
+    } else if x > 100 {
+        100
+    } else {
+        x
+    };
+    ans
+}
+
+fn add_two(x: i32, y: i32) -> i32 {
+    x + y
+}
+fn add_one(x: i32) -> i32 {
+    x + 1
 }
