@@ -244,6 +244,38 @@ fn main() {
         s.push(*c) //char型ベクターvの要素を空文字列sにpushしていく
     }
     println!("s is {}", s); //s is ねこ😸neko
+
+    //文字列スライス
+    let s = "hello rust world.";
+    let a = &s[0..1];
+    println!("first is {}", a);
+    let a = &s[0..5];
+    println!("fist to five is {}", a);
+    let a = &s[..5];
+    println!("first to five is {}", a);
+
+    //式と文
+    //末尾に;をつけると文になる
+    //値を返すものが式になる
+    //{ 10 + 20} は式
+    //{ 10 + 20;} は文
+
+    //ビット演算子(& |)
+    let a: u8 = 0b1111;
+    let b: u8 = 0b0011;
+    println!("a & b is {:04b}", a & b); //a & b is 0011
+    println!("a | b is {:04b}", a | b); //a | b is 1111
+
+    //シフト演算子(<< >>)
+    let a: u8 = 0x02;
+    println!("a << 1 is {}", a << 1); //a << 1 is 4
+    println!("a >> 1 is {}", a >> 1); //a >> 1 is 1
+
+    //論理演算子(&& ||)
+    let a = true;
+    let b = false;
+    println!("a && b is {}", a && b); //a && b is false
+    println!("a || b is {}", a || b); //a || b is true
 }
 //-----------------------------------------------------------------------------------
 //引数はSting型
