@@ -117,6 +117,39 @@ fn main() {
     }
     println!("");
     //LOOP is 0 1 2 3 4 5 6 7 8 9
+
+    //パターンマッチ
+    //enumで列挙型を定義する
+    enum LANG {
+        JAPANESE = 81, //数値を指定しないと0から始まる連番となる
+        ENGLISH = 44,
+        CHINESE = 86,
+        FRANCE = 33,
+    }
+    let lang = LANG::JAPANESE;
+    println!("lang is {}", lang as i32); //lang is 81
+
+    //アームの使用例
+    //対象となる列挙型の値と処理（または値）を=>でつなげて書いたものをアームと言う
+    let lang = LANG::JAPANESE;
+    let m = match lang {
+        LANG::JAPANESE => "日本語",
+        LANG::ENGLISH => "英語",
+        LANG::CHINESE => "中国語",
+        LANG::FRANCE => "フランス語",
+    };
+    println!("lang is {}", m);
+    //lang is 日本語
+
+    // _をmatch文に使った例
+    // _ はその他を表す。match文の中で分岐の候補を書いた後、それらの候補以外の時を表すのに使用できる
+    let lang = LANG::ENGLISH;
+    let m = match lang {
+        LANG::JAPANESE => "日本語",
+        _ => "日本語以外",
+    };
+    println!("lang is {}", m);
+    //lang is 日本語以外
 }
 
 fn test(x: i32, y: i32) -> bool {
