@@ -1,4 +1,5 @@
 //構造体を使ったプログラム例
+#[derive(Debug)] //Rectangle構造体をDebugトレイトを継承（Rectangleインスタンスをデバッグ用整形機で出力するため）
 struct Rectangle {
     width: u32,
     height: u32,
@@ -23,6 +24,12 @@ fn main() {
         width: 40,
         height: 50,
     };
+    //println!マクロで{:?}や{:#?}を使うとデバック出力用に整形される
+    println!("rect2 is {:?}", rect2); //rect2 is Rectangle { width: 40, height: 50 }
+    println!("rect2 is {:#?}", rect2); // rect2 is Rectangle {
+                                       // width: 40,
+                                       // height: 50,
+                                       //}
     println!(
         "The area of the rectangle is {} square pixels.",
         struct_area(&rect2)
