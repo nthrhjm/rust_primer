@@ -4,7 +4,12 @@ struct Rectangle {
     width: u32,
     height: u32,
 }
-
+impl Rectangle {
+    fn area(&self) -> u32 {
+        //メソッドの定義
+        self.width * self.height
+    }
+}
 fn main() {
     let width1 = 30;
     let height1 = 50;
@@ -34,6 +39,14 @@ fn main() {
         "The area of the rectangle is {} square pixels.",
         struct_area(&rect2)
     );
+
+    let rect3 = Rectangle {
+        width: 50,
+        height: 90,
+    };
+
+    //Rectangle構造体に定義されたarea()methodを使用する
+    println!("The area of the rect3 is {} square pixels.", rect3.area());
 }
 //パラメーターをふたつ取る関数
 fn area(width: u32, height: u32) -> u32 {
