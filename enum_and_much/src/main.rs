@@ -22,6 +22,26 @@ impl Message {
     }
 }
 
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+//enum Coinの列挙子をパターンにしたmatch式
+fn value_in_cents(coin: Coin) -> u32 {
+    match coin {
+        Coin::Penny => {
+            //アームが複数行なら式を{}で囲む
+            println!("Lucky penny!");
+            1
+        }
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+}
+
 fn main() {
     //IpAddrKindの各列挙子のインスタンス化
     let four = IpAddrKind::V4;
@@ -60,4 +80,6 @@ fn main() {
     //    |                 ^ no implementation for `i8 + std::option::Option<i8>`
     //    |
     //    = help: the trait `std::ops::Add<std::option::Option<i8>>` is not implemented for `i8`
+    println!("Coin::Penny is {}", value_in_cents(Coin::Penny)); //Lucky penny!
+                                                                //Coin::Penny is 1
 }
